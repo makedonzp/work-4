@@ -300,24 +300,42 @@
 }
 
 .partners__cards_wrapper {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 400px));
+  grid-auto-rows: auto;
+  grid-template-areas: "partners__one partners__two partners__three";
   max-width: clamp(18.75rem, -0.536rem + 96.43vw, 86.25rem);
   padding-top: clamp(2rem, 1.679rem + 1.61vw, 3.125rem);
+}
+.partners__cards_second_row_wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(280px, 300px));
+  grid-template-areas: "partners__four partners__five partners__six partners__seven";
+  max-width: clamp(18.75rem, -0.536rem + 96.43vw, 86.25rem);
 }
 .partners__cards {
   border: solid 1px rgba(36, 36, 36, 0.1);
 }
-.partners__one,
-.partners__two,
-.partners__three {
-  min-width: clamp(18.75rem, 16.964rem + 11.27vw, 35rem);
+.partners__one {
+  grid-area: partners__one;
 }
-.partners__four,
-.partners__five,
-.partners__six,
+.partners__two {
+  grid-area: partners__two;
+}
+.partners__three {
+  grid-area: partners__three;
+}
+.partners__four {
+  grid-area: partners__four;
+}
+.partners__five {
+  grid-area: partners__five;
+}
+.partners__six {
+  grid-area: partners__six;
+}
 .partners__seven {
-  min-width: clamp(9.375rem, 6.7rem + 15.47vw, 21.39rem);
+  grid-area: partners__seven;
 }
 .smc {
   background-image: url("../images/smc__icon.png");
@@ -844,8 +862,14 @@
 }
 
 @media (max-width: 1200px) {
-  .partners__cards_wrapper {
-    flex-direction: column;
+  .partners__cards_wrapper,
+  .partners__cards_second_row_wrapper {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-areas:
+      "partners__one partners__two"
+      "partners__three  partners__three "
+      " partners__four partners__five "
+      "partners__six partners__seven";
   }
   .import__content_wrapper {
     display: flex;
@@ -954,6 +978,19 @@
   }
   .roubrics__container {
     margin-top: 5%;
+  }
+  .partners__cards_wrapper,
+  .partners__cards_second_row_wrapper {
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+    grid-template-areas:
+      "partners__one"
+      "partners__two"
+      "partners__three   "
+      "partners__three"
+      " partners__four  "
+      "partners__five"
+      "partners__six "
+      "partners__seven";
   }
 }
 @media (max-width: 750px) {
